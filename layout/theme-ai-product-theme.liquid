@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" fontify-lang="{{ shop.locale }}">
+<head>
+  <meta name="facebook-domain-verification" content="ko7mlxypzgvf02farlyomtqmzf35st" />
+  <meta name="google-site-verification" content="haNz4N7WSh1SjxGAPyY5UJnAG9yXJj6crZEBR6XEBGg" />
+ <!-- MLveda code starts -->
+ {% assign mlveda_code_flag = true %}
+  
+  {% if mlveda_code_flag == true %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      	$m = $.noConflict(true);
+	 window.pattern = /^(do|sv|ee|fi|fr|gd|gp|gg|hu|is|im|il|kz|ke|kg|la|mo|mk|mh|mq|ms|ma|nl|ne|ng|no|pw|py|pl|pt|kn|st|sc|sg|sk|za|sr|sj|th|to|tm|tc|uz|vu|vn|zm|af|al|as|ao|ai|an|ag|ar|as|bb|by|aq|bm|bq|bv|au|vg|bs|cv|bh|cf|bd|cn|be|co|ba|ci|bw|dk|bn|dm|bi|cd|cm|ec|ca|eg|td|gq|cx|er|cc|et|cr|eu|ga|gh|cy|gi|dj|gu|eu|gt|fk|gn|fo|gw|gf|hm|pf|hn|gm|iq|ge|ie|de|jm|gr|jp|in|ki|id|lr|je|mw|lv|my|ly|mu|li|yt|mv|mx|mc|mn|mz|nr|np|ni|nu|nf|pk|na|ph|oc|pn|om|qa|pg|re|pr|sh|ro|ru|rw|sm|bl|rs|pm|sx|vc|gs|sa|sd|sl|se|si|tj|tz|sb|tt|sa|tn|es|gb|lk|va|ch|zw|sy|tw|tl|tg|tr|um|vi|ug|us|uy|ve|af|ax|dz|ad|am|aw|at|az|bz|bj|bt|bo|br|io|bg|bf|kh|ky|cl|km|cg|ck|hr|cu|cw|cz|fj|tf|gl|gy|ht|hk|ir|it|jo|kw|lb|ls|lt|lu|mg|ml|mt|mr|fm|md|me|mm|na|nc|nz|kp|mp|ps|pa|pe|lc|mf|ws|sn|so|kr|ss|sz|tk|tv|ua|ae|wf|eh|ye|intl)$/;
+      </script>
+
+  {% endif %}
+<!-- MLveda code ends -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="//fonts.shopifycdn.com/" crossorigin>
+  <link rel="preconnect" href="//cdn.shopify.com/" crossorigin>
+  <link rel="dns-prefetch" href="//{{shop.domain}}" crossorigin>
+  <link rel="dns-prefetch" href="//{{shop.permanent_domain}}" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.shopify.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.shopifycdn.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="preload" as="style" href="{{ 'pre_theme.scss.css' | asset_url }}">
+  <link rel="preload" as="style" href="{{ 'theme.scss.css' | asset_url }}">
+  {%- capture seo_title -%}
+    {%- if template == 'search' and search.performed == true -%}{{ 'general.search.heading' | t: count: search.results_count }}: {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}{%- elsif template == 'search.wish' %}{{ 'general.meta.wishlist' | t }}{%- else -%}{{ page_title }}{%- endif -%}
+    {%- if current_tags -%}{%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}{%- endif -%}
+    {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name %} &ndash; {{ shop.name }}{%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+  {%- if page_description %}<meta name="description" content="{{ page_description | escape }}">
+  {%- elsif collection.current_type or collection.current_vendor %}<meta name="description" content="{{ shop.description | default: shop.name | escape }}">{% endif -%}
+  {%- if settings.favicon != blank %}<link rel="shortcut icon" type="image/png" href="{{ settings.favicon | img_url: '32x' }}">{% endif -%}
+  {%- if settings.favicon_apple != blank %}<link rel="apple-touch-icon-precomposed" type="image/png" sizes="152x152" href="{{ settings.favicon_apple | img_url: '152x' }}">{% endif -%}
+  {%- liquid 
+    assign t_name = request.page_type
+    assign body_img = settings.body_bg_image
+    render 'social-meta-tags',t_name:t_name
+    render 'head_assets',t_name:t_name
+    capture class_body_theme 
+      render 'class_body_theme',t_name:t_name, body_img:body_img 
+    endcapture -%}
+
+    {{ content_for_header }}  {{ shop.metafields.fontify.stylesheets }}
+<!-- MLveda code starts -->
+ {% if mlveda_code_flag == true %}
+    {% include 'mlveda-multipricing-options' %}
+  {% endif %}
+
+<script>
+document.addEventListener('DOMSubtreeModified', function () {
+    var labels = document.getElementsByTagName('LABEL');
+    for ( var i = 0; i < labels.length; i++ ) {
+      if ( labels[i].innerHTML == "mlveda_country" && labels[i].parentNode.style.display != "none" ) {
+          labels[i].parentNode.style.display = "none";
+      }
+    }
+  });
+</script>
+<!-- MLveda code ends -->
+
+  
+
+<script>
+window.mlvedaShopCurrency = "{{ shop.currency }}";
+window.shopCurrency = "{{ shop.currency }}";
+window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+</script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K79J7K1R28"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K79J7K1R28');
+</script>
+   
+{% include 'pagefly-header' %}
+ </head> 
+
+<body {{class_body_theme | strip_newlines-}}>
+  {%- render 'lazypreload' -%}
+  <div id="nt_wrapper">
+    {%- render 'header',t_name:t_name -%}
+    <div id="nt_content"><!-- MLveda code starts -->
+	{% if mlveda_code_flag == false %}
+          	{{ content_for_layout }}	
+          {% endif %}
+
+          {% if mlveda_code_flag == true %}
+            {{ content_for_layout }}
+          	{% include 'mlveda-multipricing-selectBox' %}
+          	{% include 'mlveda-multipricing-selectors' %}
+          {% endif %}
+<!-- MLveda code ends -->
+</div>
+    <footer id="nt_footer" class="bgbl footer-1">{%- section 'footer_top' -%}{%- section 'footer_bot' -%}</footer>
+  </div>
+  {%- render 'div_html',t_name:t_name -%}
+{% include 'easyvideo' %}
+<!-- MLveda code starts -->
+{% if mlveda_code_flag == true %}
+		{% include 'mlveda-multipricing-updateprice' %}
+  {% else %}
+		<script>mlvedaFlagCalled = true;</script>
+  {% endif %}
+<!-- MLveda code ends -->
+{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}{% include 'mlveda-currencies-style' %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  </body>
+</html>

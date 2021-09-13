@@ -1,0 +1,25 @@
+{% assign My_Four_Thousand = 400000 %}
+
+{%- comment -%}
+  Custom Gift Code by Arsal STARTS HERE
+{%- endcomment -%}
+
+{% if cart.total_price >= 400000 %}
+
+
+
+
+</div>
+
+{% else %}
+<div style=" margin-top: 50px; padding:50px; text-align:center; background-color: 	#FFB6C1; color: black;">
+ You are just {{ My_Four_Thousand | minus:cart.total_price  | money }} away From your free gift! 
+   <br><br> <a class="button filter_title_btn dn" href="https://pk.zaybeauty.com">Shop Now</a>
+</div>
+</div>
+{% endif %}
+
+{%- comment -%}
+  Custom Gift Code by Arsal ENDS HERE
+{%- endcomment -%}
+

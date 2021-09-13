@@ -1,0 +1,70 @@
+
+  <div class="autoplay_vid">
+	<video class="video-fluid z-depth-1" autoplay loop muted>
+  	<source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" />
+	</video>
+<!--     <div class="vid_overlay">
+    <h1 style=" color: #ffffff ">Demo Video</h1>
+  	</div>  -->
+  </div>
+
+
+
+{% schema %}
+  {
+    "name": "AutoPlay Video",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style>
+  
+  
+  
+/*   .autoplay_vid{
+      position: relative;
+  	  text-align: center;
+      color: white;
+  }
+  .vid_overlay {
+      position: absolute;
+      color: #ffffff;
+      bottom: 50px;
+      right: 50px;
+      
+	}
+  .vid_overlay h1{
+  	  animation: backInLeft;
+  	  animation-duration: 2s;
+      
+  
+  } */
+  
+  .video-fluid {
+      width: 100%;
+      height: auto;
+	} 
+</style>
+
+
+<script>
+function playvideo()
+{
+document.getElementById("video").play();
+}
+
+myVid=document.getElementById("video");
+myVid.oncanplay=playvideo();
+</script> 
+
+
+
+
+
+
